@@ -128,7 +128,7 @@ Once the server is running, the following endpoints are also available:
 
 ## Formatting
 
-F# code is formatted with [Fantomas](https://fsprojects.github.io/fantomas/) and the MSBuild/XML files (`.fsproj`, `.props`, `.slnx`) with [CSharpier](https://csharpier.com), both pinned in `dotnet-tools.json`. `.csharpierrc.yaml` maps `*.fsproj` to CSharpier's XML formatter, which it does not pick up by default:
+Code is formatted with [Fantomas](https://fsprojects.github.io/fantomas/), pinned in `dotnet-tools.json`:
 
 ```sh
 dotnet tool restore

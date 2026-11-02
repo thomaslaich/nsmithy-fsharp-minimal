@@ -9,8 +9,6 @@ client-debug *args:
 
 fmt:
     dotnet fantomas Weather.Server Weather.Client
-    dotnet csharpier format .
 
 fmt-check:
     dotnet fantomas --check Weather.Server Weather.Client
-    dotnet csharpier check .

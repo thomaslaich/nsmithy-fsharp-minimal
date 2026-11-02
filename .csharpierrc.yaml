@@ -1,4 +1,0 @@
-# CSharpier formats the MSBuild/XML files; F# sources are formatted by Fantomas.
-overrides:
-  - files: "*.fsproj"
-    formatter: "xml"
