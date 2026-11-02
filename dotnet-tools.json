@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "csharpier": {
+      "version": "1.3.0",
+      "commands": [
+        "csharpier"
+      ],
+      "rollForward": false
+    },
+    "fantomas": {
+      "version": "8.1.0",
+      "commands": [
+        "fantomas"
+      ],
+      "rollForward": false
+    },
+    "dotnet-nsmithy": {
+      "version": "0.16.0",
+      "commands": [
+        "dotnet-nsmithy"
+      ],
+      "rollForward": false
+    }
+  }
+}

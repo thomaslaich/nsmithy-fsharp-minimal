@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <SmithyService>example.weather#Weather</SmithyService>
+        <SmithyGeneratedNamespaces>example.weather</SmithyGeneratedNamespaces>
+        <SmithyGenerateDocs>true</SmithyGenerateDocs>
+        <SmithyOpenApiProtocol>aws.protocols#restJson1</SmithyOpenApiProtocol>
+        <SmithyGenerateClient>false</SmithyGenerateClient>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="CityData.fs" />
+        <Compile Include="WeatherHandler.fs" />
+        <Compile Include="Program.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="NSmithy.Server.AspNetCore" />
+        <PackageReference Include="NSmithy.Server.AspNetCore.Docs" />
+        <PackageReference Include="NSmithy.Protocols.RestJson" />
+        <ProjectReference Include="../Weather.Contracts/Weather.Contracts.fsproj" />
+    </ItemGroup>
+</Project>

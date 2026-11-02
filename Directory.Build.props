@@ -1,0 +1,10 @@
+<Project>
+  <PropertyGroup>
+    <!-- Central package management pins FSharp.Core like any other package. -->
+    <DisableImplicitFSharpCoreReference>true</DisableImplicitFSharpCoreReference>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FSharp.Core" />
+  </ItemGroup>
+</Project>

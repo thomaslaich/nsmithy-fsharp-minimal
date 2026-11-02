@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Weather.Client/Weather.Client.fsproj" />
+  <Project Path="Weather.Contracts/Weather.Contracts.fsproj" />
+  <Project Path="Weather.Server/Weather.Server.fsproj" />
+</Solution>
