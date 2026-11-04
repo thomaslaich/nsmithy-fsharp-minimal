@@ -34,8 +34,9 @@ let run (endpoint: Uri) (debug: bool) =
         printfn "All cities (paginated, page size 3):"
         do! printPages client 1 None
 
-        let! seattle = client.GetCityAsync { CityId = "SEA" }
-        printfn "Seattle: (%g, %g)" seattle.Coordinates.Latitude seattle.Coordinates.Longitude
+        match! client.GetCityAsync { CityId = "SEA" } with
+        | Ok seattle -> printfn "Seattle: (%g, %g)" seattle.Coordinates.Latitude seattle.Coordinates.Longitude
+        | Error(GetCityError.NoSuchResource error) -> printfn "No such %s: SEA" error.ResourceType
 
         let! forecast = client.GetForecastAsync { CityId = "SEA" }
 
@@ -44,12 +45,10 @@ let run (endpoint: Uri) (debug: bool) =
         | None -> printfn "Forecast for SEA: unknown"
 
         // "Atlantis" satisfies the model, so it reaches the handler and comes back as the error the
-        // operation declares — a modeled error, surfaced as a typed exception.
-        try
-            let! _ = client.GetCityAsync { CityId = "Atlantis" }
-            ()
-        with :? NoSuchResource as error ->
-            printfn "No such %s: Atlantis" error.ResourceType
+        // operation declares: a modeled error, returned as the Error case of the operation's Result.
+        match! client.GetCityAsync { CityId = "Atlantis" } with
+        | Ok _ -> ()
+        | Error(GetCityError.NoSuchResource error) -> printfn "No such %s: Atlantis" error.ResourceType
 
         // CityId is @pattern("^[A-Za-z0-9 ]+$"), and constraints are enforced by the server — the
         // client sends what it is handed. The rejection comes back as

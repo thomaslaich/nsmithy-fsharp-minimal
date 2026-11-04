@@ -8,7 +8,7 @@ The service is the Weather example from the [Smithy quickstart](https://smithy.i
 
 ## Projects
 
-- **Weather.Contracts** — Smithy model (`model/weather.smithy`). Builds the contract and publishes the model to the server and client, which each generate their own F# types from it.
+- **Weather.Contracts** — Smithy model (`model/weather.smithy`). Builds the contract and generates the F# types the server and client share.
 - **Weather.Server** — ASP.NET Core server; `WeatherHandler.fs` implements the generated `IWeatherServiceHandler` against hardcoded in-memory data.
 - **Weather.Client** — Console app that exercises the API end-to-end. Paginators are C#-only for now, so it follows `nextToken` with a small recursive function.
 
@@ -119,7 +119,7 @@ X-Amzn-Errortype: NoSuchResource
 {"resourceType":"City"}
 ```
 
-The client exercises both of these — a modeled `NoSuchResource` and an implicit `ValidationException` — as typed exceptions (`with :? NoSuchResource as error -> ...`) rather than bare status codes.
+The client exercises both of these rather than bare status codes: a modeled `NoSuchResource` as the `Error` case of the operation's `Result` (`Error(GetCityError.NoSuchResource error) -> ...`), and an implicit `ValidationException` as a typed exception (`with :? ValidationException as error -> ...`).
 
 Once the server is running, the following endpoints are also available:
 
