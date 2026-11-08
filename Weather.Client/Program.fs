@@ -28,7 +28,7 @@ let run (endpoint: Uri) (debug: bool) =
             else
                 new WeatherClient(endpoint)
 
-        let! time = client.GetCurrentTimeAsync(GetCurrentTimeInput())
+        let! time = client.GetCurrentTimeAsync()
         printfn "Current time: %s" (time.Time.ToString "u")
 
         printfn "All cities (paginated, page size 3):"
