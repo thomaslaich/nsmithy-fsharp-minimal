@@ -119,7 +119,7 @@ X-Amzn-Errortype: NoSuchResource
 {"resourceType":"City"}
 ```
 
-The client exercises both of these rather than bare status codes: a modeled `NoSuchResource` as the `Error` case of the operation's `Result` (`Error(GetCityError.NoSuchResource error) -> ...`), and an implicit `ValidationException` as a typed exception (`with :? ValidationException as error -> ...`).
+The client exercises both of these rather than bare status codes: the model declares `NoSuchResource` and `ValidationException` on `GetCity`, so each is an `Error` case of the operation's `Result` (`Error(GetCityError.NoSuchResource error) -> ...`, `Error(GetCityError.ValidationException error) -> ...`).
 
 Once the server is running, the following endpoints are also available:
 

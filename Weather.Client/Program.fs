@@ -2,7 +2,6 @@ open System
 open System.Threading.Tasks
 open Example.Weather
 open NSmithy.Client
-open NSmithy.Core.Validation
 
 /// Walks every page of ListCities. Paginators are C#-only for now, so follow `nextToken` by hand.
 let rec printPages (client: WeatherClient) (page: int) (token: string option) : Task<unit> =
@@ -37,27 +36,28 @@ let run (endpoint: Uri) (debug: bool) =
         match! client.GetCityAsync { CityId = "SEA" } with
         | Ok seattle -> printfn "Seattle: (%g, %g)" seattle.Coordinates.Latitude seattle.Coordinates.Longitude
         | Error(GetCityError.NoSuchResource error) -> printfn "No such %s: SEA" error.ResourceType
+        | Error(GetCityError.ValidationException error) -> printfn "Rejected \"SEA\": %s" error.Message
 
-        let! forecast = client.GetForecastAsync { CityId = "SEA" }
-
-        match forecast.ChanceOfRain with
-        | Some chance -> printfn "Forecast for SEA: %.0f%% chance of rain" (chance * 100.0f)
-        | None -> printfn "Forecast for SEA: unknown"
+        match! client.GetForecastAsync { CityId = "SEA" } with
+        | Ok { ChanceOfRain = Some chance } -> printfn "Forecast for SEA: %.0f%% chance of rain" (chance * 100.0f)
+        | Ok _ -> printfn "Forecast for SEA: unknown"
+        | Error(GetForecastError.ValidationException error) -> printfn "Rejected \"SEA\": %s" error.Message
 
         // "Atlantis" satisfies the model, so it reaches the handler and comes back as the error the
         // operation declares: a modeled error, returned as the Error case of the operation's Result.
         match! client.GetCityAsync { CityId = "Atlantis" } with
         | Ok _ -> ()
         | Error(GetCityError.NoSuchResource error) -> printfn "No such %s: Atlantis" error.ResourceType
+        | Error(GetCityError.ValidationException error) -> printfn "Rejected \"Atlantis\": %s" error.Message
 
-        // CityId is @pattern("^[A-Za-z0-9 ]+$"), and constraints are enforced by the server — the
+        // CityId is @pattern("^[A-Za-z0-9 ]+$"), and constraints are enforced by the server: the
         // client sends what it is handed. The rejection comes back as
-        // smithy.framework#ValidationException, an implicit modeled error on every operation, so it
-        // deserializes into a typed exception naming the member and the constraint it failed.
-        try
-            let! _ = client.GetCityAsync { CityId = "SEA!" }
-            ()
-        with :? ValidationException as error ->
+        // smithy.framework#ValidationException, which the model declares on GetCity, so it is a
+        // case of the operation's Result naming the member and the constraint it failed.
+        match! client.GetCityAsync { CityId = "SEA!" } with
+        | Ok _ -> ()
+        | Error(GetCityError.NoSuchResource error) -> printfn "No such %s: SEA!" error.ResourceType
+        | Error(GetCityError.ValidationException error) ->
             printfn "Rejected \"SEA!\": %s" error.Message
 
             for field in error.FieldList do

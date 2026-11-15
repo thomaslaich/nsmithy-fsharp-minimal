@@ -3,6 +3,7 @@ $version: "2"
 namespace example.weather
 
 use aws.protocols#restJson1
+use smithy.framework#ValidationException
 
 /// Provides weather forecasts.
 ///
@@ -63,7 +64,7 @@ operation GetCity {
         @required
         $coordinates
     }
-    errors: [NoSuchResource]
+    errors: [NoSuchResource, ValidationException]
 }
 
 /// Returns a paginated list of cities.
@@ -102,6 +103,7 @@ operation GetForecast {
         /// Probability of rain, between 0.0 (no rain) and 1.0 (certain rain).
         $chanceOfRain
     }
+    errors: [ValidationException]
 }
 
 /// The latitude and longitude of a city in decimal degrees.
