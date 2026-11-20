@@ -12,16 +12,18 @@ type WeatherHandler() =
         member _.GetCityAsync(input, _) =
             match CityData.cities |> List.tryFind (fun c -> c.CityId = input.CityId) with
             | Some city ->
-                Task.FromResult
-                    {
-                        Name = city.Name
-                        Coordinates =
-                            {
-                                Latitude = city.Latitude
-                                Longitude = city.Longitude
-                            }
-                    }
-            | None -> raise (NoSuchResource("City"))
+                Task.FromResult(
+                    Ok
+                        {
+                            Name = city.Name
+                            Coordinates =
+                                {
+                                    Latitude = city.Latitude
+                                    Longitude = city.Longitude
+                                }
+                        }
+                )
+            | None -> Task.FromResult(Error(GetCityError.NoSuchResource { ResourceType = "City" }))
 
         member _.ListCitiesAsync(input, _) =
             let pageSize = defaultArg input.PageSize 3
@@ -49,4 +51,4 @@ type WeatherHandler() =
                 }
 
         member _.GetForecastAsync(_, _) =
-            Task.FromResult { ChanceOfRain = Some 0.4f }
+            Task.FromResult(Ok { ChanceOfRain = Some 0.4f })
