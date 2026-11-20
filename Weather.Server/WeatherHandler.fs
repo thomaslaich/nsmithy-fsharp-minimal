@@ -1,11 +1,11 @@
-namespace Example.Weather
+module Example.Weather.WeatherHandler
 
 open System
 open System.Threading.Tasks
 
 /// Hardcoded in-memory implementation of every operation of the Weather service.
-type WeatherHandler() =
-    interface IWeatherServiceHandler with
+let create () =
+    { new IWeatherServiceHandler with
         member _.GetCurrentTimeAsync(_, _) =
             Task.FromResult { Time = DateTimeOffset.UtcNow }
 
@@ -52,3 +52,4 @@ type WeatherHandler() =
 
         member _.GetForecastAsync(_, _) =
             Task.FromResult(Ok { ChanceOfRain = Some 0.4f })
+    }

@@ -8,7 +8,7 @@ open Example.Weather
 let main args =
     let builder = WebApplication.CreateBuilder(args)
     builder.Services.AddSmithyServer() |> ignore
-    builder.Services.AddWeatherServiceHandler<WeatherHandler>() |> ignore
+    builder.Services.AddWeatherServiceHandler(WeatherHandler.create ()) |> ignore
 
     let app = builder.Build()
     app.MapSmithyOpenApi() |> ignore

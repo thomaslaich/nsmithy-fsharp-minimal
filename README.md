@@ -9,7 +9,7 @@ The service is the Weather example from the [Smithy quickstart](https://smithy.i
 ## Projects
 
 - **Weather.Contracts** — Smithy model (`model/weather.smithy`). Builds the contract and generates the F# types the server and client share.
-- **Weather.Server** — ASP.NET Core server; `WeatherHandler.fs` implements the generated `IWeatherServiceHandler` against hardcoded in-memory data.
+- **Weather.Server** — ASP.NET Core server; `WeatherHandler.create` implements the generated `IWeatherServiceHandler` as an object expression over hardcoded in-memory data, registered as an instance.
 - **Weather.Client** — Console app that exercises the API end-to-end. Paginators are C#-only for now, so it follows `nextToken` with a small recursive function.
 
 ## Prerequisites
