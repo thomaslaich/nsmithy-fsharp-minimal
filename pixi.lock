@@ -102,7 +102,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/fonts-conda-ecosystem-1-0.tar.bz2
       - conda: https://conda.anaconda.org/conda-forge/noarch/fonts-conda-forge-1-hc364b38_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/python_abi-3.15-9_cp315.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/smithy-1.74.1-hc364b38_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/smithy-1.75.0-hc364b38_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/tzdata-2026c-h151e31d_0.conda
       linux-aarch64:
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/_openmp_mutex-4.5-20_gnu.conda
@@ -175,12 +175,12 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/fonts-conda-ecosystem-1-0.tar.bz2
       - conda: https://conda.anaconda.org/conda-forge/noarch/fonts-conda-forge-1-hc364b38_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/python_abi-3.15-9_cp315.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/smithy-1.74.1-hc364b38_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/smithy-1.75.0-hc364b38_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/tzdata-2026c-h151e31d_0.conda
       osx-64:
       - conda: https://conda.anaconda.org/conda-forge/noarch/ca-certificates-2026.7.22-hbd8a1cb_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/python_abi-3.15-9_cp315.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/smithy-1.74.1-hc364b38_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/smithy-1.75.0-hc364b38_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/tzdata-2026c-h151e31d_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/bzip2-1.0.8-h374f1ed_10.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/dotnet-10.0.401-h694c41f_0.conda
@@ -205,7 +205,7 @@ environments:
       osx-arm64:
       - conda: https://conda.anaconda.org/conda-forge/noarch/ca-certificates-2026.5.20-hbd8a1cb_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/python_abi-3.15-9_cp315.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/smithy-1.74.1-hc364b38_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/smithy-1.75.0-hc364b38_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/tzdata-2025c-hc9c84f9_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/bzip2-1.0.8-hd037594_9.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/dotnet-10.0.401-hce30654_0.conda
@@ -230,7 +230,7 @@ environments:
       win-64:
       - conda: https://conda.anaconda.org/conda-forge/noarch/ca-certificates-2026.7.22-h4c7d964_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/python_abi-3.15-9_cp315.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/smithy-1.74.1-hc364b38_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/smithy-1.75.0-hc364b38_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/tzdata-2026c-h151e31d_0.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/bzip2-1.0.8-h0ad9c76_10.conda
       - conda: https://conda.anaconda.org/conda-forge/win-64/dotnet-10.0.401-h57928b3_0.conda
@@ -2142,16 +2142,16 @@ packages:
   run_exports: {}
   size: 6800
   timestamp: 1788302827589
-- conda: https://conda.anaconda.org/conda-forge/noarch/smithy-1.74.1-hc364b38_0.conda
-  sha256: 45747b4db8f193b4c0f3525711bb529c9a98d08f5a013bc66f66444d4eb1c3b8
-  md5: c0f25eb14945d1575d694315d69dd83a
+- conda: https://conda.anaconda.org/conda-forge/noarch/smithy-1.75.0-hc364b38_0.conda
+  sha256: b55e409a6043692713fb011ad8e1429bda71c98419ee3046138e9a75cf836e2a
+  md5: dbc65d0d7a9d11ea9683392c9ff75085
   depends:
   - openjdk
   license: Apache-2.0
   license_family: APACHE
   run_exports: {}
-  size: 10403782
-  timestamp: 1792017118674
+  size: 10512868
+  timestamp: 1794561029087
 - conda: https://conda.anaconda.org/conda-forge/noarch/tzdata-2025c-hc9c84f9_1.conda
   sha256: 1d30098909076af33a35017eed6f2953af1c769e273a0626a04722ac4acaba3c
   md5: ad659d0a2b3e47e38d829aa8cad2d610
