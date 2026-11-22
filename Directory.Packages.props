@@ -4,12 +4,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageVersion Include="FSharp.Control.TaskSeq" Version="1.1.1" />
     <PackageVersion Include="FSharp.Core" Version="10.1.201" />
-    <PackageVersion Include="NSmithy.MSBuild" Version="0.22.0" />
-    <PackageVersion Include="NSmithy.Core" Version="0.22.0" />
-    <PackageVersion Include="NSmithy.Client" Version="0.22.0" />
-    <PackageVersion Include="NSmithy.Protocols.RestJson" Version="0.22.0" />
-    <PackageVersion Include="NSmithy.Server.AspNetCore" Version="0.22.0" />
-    <PackageVersion Include="NSmithy.Server.AspNetCore.Docs" Version="0.22.0" />
+    <PackageVersion Include="NSmithy.MSBuild" Version="0.23.0" />
+    <PackageVersion Include="NSmithy.Core" Version="0.23.0" />
+    <PackageVersion Include="NSmithy.Client" Version="0.23.0" />
+    <PackageVersion Include="NSmithy.Protocols.RestJson" Version="0.23.0" />
+    <PackageVersion Include="NSmithy.Server.AspNetCore" Version="0.23.0" />
+    <PackageVersion Include="NSmithy.Server.AspNetCore.Docs" Version="0.23.0" />
   </ItemGroup>
 </Project>

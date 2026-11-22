@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="FSharp.Control.TaskSeq" />
         <PackageReference Include="NSmithy.Client" />
         <PackageReference Include="NSmithy.Protocols.RestJson" />
         <ProjectReference Include="../Weather.Contracts/Weather.Contracts.fsproj" />
