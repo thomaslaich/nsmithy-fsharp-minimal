@@ -4,15 +4,6 @@ open Example.Weather
 open FSharp.Control
 open NSmithy.Client
 
-/// Walks every page of ListCities. The generated paginator follows `nextToken` until a page has none.
-let printPages (client: WeatherClient) : Task<unit> =
-    client.ListCitiesPagesAsync { NextToken = None; PageSize = Some 3 }
-    |> TaskSeq.iteri (fun i result ->
-        printfn "  Page %d:" (i + 1)
-
-        for city in result.Items do
-            printfn "    %s: %s" city.CityId city.Name)
-
 let run (endpoint: Uri) (debug: bool) =
     task {
         use client =
@@ -26,8 +17,12 @@ let run (endpoint: Uri) (debug: bool) =
         let! time = client.GetCurrentTimeAsync()
         printfn "Current time: %s" (time.Time.ToString "u")
 
-        printfn "All cities (paginated, page size 3):"
-        do! printPages client
+        // The generated paginator requests page after page, following `nextToken`, and yields each item.
+        printfn "All cities (page size 3):"
+
+        do!
+            client.ListCitiesItemsAsync { NextToken = None; PageSize = Some 3 }
+            |> TaskSeq.iter (fun city -> printfn "  %s: %s" city.CityId city.Name)
 
         match! client.GetCityAsync { CityId = "SEA" } with
         | Ok seattle -> printfn "Seattle: (%g, %g)" seattle.Coordinates.Latitude seattle.Coordinates.Longitude

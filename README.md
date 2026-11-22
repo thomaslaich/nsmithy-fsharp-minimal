@@ -10,7 +10,7 @@ The service is the Weather example from the [Smithy quickstart](https://smithy.i
 
 - **Weather.Contracts** — Smithy model (`model/weather.smithy`). Builds the contract and generates the F# types the server and client share.
 - **Weather.Server** — ASP.NET Core server; `WeatherHandler.create` implements the generated `IWeatherServiceHandler` as an object expression over hardcoded in-memory data, registered as an instance.
-- **Weather.Client** — Console app that exercises the API end-to-end. It walks the paginated `ListCities` with the generated `ListCitiesPagesAsync` paginator, iterated with [FSharp.Control.TaskSeq](https://github.com/fsprojects/FSharp.Control.TaskSeq).
+- **Weather.Client** — Console app that exercises the API end-to-end. It lists every city with the generated `ListCitiesItemsAsync` paginator, which follows `nextToken` across pages, iterated with [FSharp.Control.TaskSeq](https://github.com/fsprojects/FSharp.Control.TaskSeq).
 
 ## Prerequisites
 
