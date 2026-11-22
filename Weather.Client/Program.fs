@@ -17,11 +17,12 @@ let run (endpoint: Uri) (debug: bool) =
         let! time = client.GetCurrentTimeAsync()
         printfn "Current time: %s" (time.Time.ToString "u")
 
-        // The generated paginator requests page after page, following `nextToken`, and yields each item.
-        printfn "All cities (page size 3):"
+        // The server returns 3 cities per page by default; the generated paginator follows `nextToken`
+        // from page to page and yields each city.
+        printfn "All cities:"
 
         do!
-            client.ListCitiesItemsAsync { NextToken = None; PageSize = Some 3 }
+            client.ListCitiesItemsAsync()
             |> TaskSeq.iter (fun city -> printfn "  %s: %s" city.CityId city.Name)
 
         match! client.GetCityAsync { CityId = "SEA" } with
